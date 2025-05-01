@@ -50,10 +50,11 @@ applyForm = new FormGroup ({
     email: new FormControl(''),
 });
 
-
 constructor() {
   const housingLocationId = Number(this.route.snapshot.params['id']);
-  this.housingLocation = this.housingService.getHousingLocationbyId(housingLocationId);
+  this.housingService.getHousingLocationbyId(housingLocationId).then(housingLocation =>{
+    this.housingLocation = housingLocation;
+  });
 }
 submitApplication(){
 this.housingService.submitApplication(
